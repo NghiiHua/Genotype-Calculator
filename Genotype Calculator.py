@@ -6,10 +6,10 @@ mothergenotype = ""
 
 
 def evaluate_input(evaluate):
-    if input != "recessive" or "dominant":
-        print("Please print 'dominant' or 'recessive'.")
-    else:
+    if evaluate == "recessive" or "dominant":
         mothergenotype == mothergenotype + str(evaluate)
+    else:
+        print("Please restart and print 'dominant' or 'recessive'.")
 
 
 while mother <= int(traitsquantity):
