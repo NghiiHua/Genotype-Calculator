@@ -4,22 +4,18 @@ traitsquantity = input(
 mother = 1
 mothergenotype = ""
 
-
-def evaluate_input(evaluate):
-    if evaluate == "recessive" or "dominant":
-        mothergenotype == mothergenotype + str(evaluate)
-    else:
-        print("Please restart and print 'dominant' or 'recessive'.")
-
-
-while mother <= int(traitsquantity):
-    if len(str(mothergenotype)) % 2 == 0:
+if mother <= int(traitsquantity):
+    if len(str(mothergenotype)) % 2 == 1 or str(mothergenotype) == "":
         evaluate = input("Is the first allele of the MOTHER trait "
-                         + str(mother) + " recessive or dominant?")
-        evaluate_input(evaluate)
+                         + str(mother) + " rec or dom?")
+        mothergenotype = mothergenotype + " " + str(evaluate)
         evaluate = input("Is the second allele of the MOTHER trait "
-                         + str(mother) + " recessive or dominant?")
-        evaluate_input(evaluate)
+                         + str(mother) + " rec or dom?")
+        mothergenotype = mothergenotype + " " + str(evaluate)
         mother = int(mother) + 1
-    if mother > int(traitsquantity):
-        break
+
+for element in range(len(mothergenotype)):
+    if element != "rec" or "dom":
+        mothergenotype = "Restart and print either 'dom' or 'rec'."
+
+print(mothergenotype)
