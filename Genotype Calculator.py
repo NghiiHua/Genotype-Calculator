@@ -8,6 +8,21 @@ traitsquantity = input(
 mother = 1
 mothergenotype = ""
 
+
+# function to evaluate input
+# create the mother genotype
+def check_mother(evaluate):
+    global mothergenotype
+    # assign values depending on rec or dom
+    if evaluate == "dom":
+        mothergenotype = mothergenotype + "1 "
+    elif evaluate == "rec":
+        mothergenotype = mothergenotype + "0 "
+    # error input
+    else:
+        mothergenotype = mothergenotype + "error"
+
+
 # create mother genotype
 # repeat until all alleles for traits are determined
 while mother <= int(traitsquantity):
@@ -15,17 +30,12 @@ while mother <= int(traitsquantity):
     if len(str(mothergenotype)) % 2 == 0 or str(mothergenotype) == "":
         evaluate = input("Is the FIRST allele of the MOTHER trait "
                          + str(mother) + " rec or dom?")
-        if evaluate == "dominant":
-            mothergenotype == mothergenotype + "1"
-        elif evaluate == "recessive":
-            mothergenotype ==
-        # create the mother genotype
-        mothergenotype = mothergenotype + " " + str(evaluate)
+        # run checking function
+        check_mother(evaluate)
         # ask for second allele of the trait
         evaluate = input("Is the SECOND allele of the MOTHER trait "
                          + str(mother) + " rec or dom?")
-        # create the mother genotype
-        mothergenotype = mothergenotype + " " + str(evaluate)
+        check_mother(evaluate)
         # moving to next trait
         mother = int(mother) + 1
     else:
@@ -33,7 +43,66 @@ while mother <= int(traitsquantity):
         # considering alleles for more than one trait
         evaluate = input("Is the FIRST allele of the MOTHER trait "
                          + str(mother) + " rec or dom?")
-        # create the mother genotype
-        mothergenotype = mothergenotype + " " + str(evaluate)
+        # run checking function
+        check_mother(evaluate)
         # moving to next trait
         mother = int(mother) + 1
+
+# initializing strings
+# for father
+father = 1
+fathergenotype = ""
+
+
+# function to evaluate input
+# create the mother genotype
+def check_father(evaluate):
+    global fathergenotype
+    # assign values depending on rec or dom
+    if evaluate == "dom":
+        fathergenotype = fathergenotype + "1 "
+    elif evaluate == "rec":
+        fathergenotype = fathergenotype + "0 "
+    # error input
+    else:
+        fathergenotype = fathergenotype + "error"
+
+
+# create father genotype
+# repeat until all alleles for traits are determined
+while father <= int(traitsquantity):
+    # determine between 1st or 2nd allele
+    if len(str(fathergenotype)) % 2 == 0 or str(fathergenotype) == "":
+        evaluate = input("Is the FIRST allele of the FATHER trait "
+                         + str(father) + " rec or dom?")
+        # run checking function
+        check_father(evaluate)
+        # ask for second allele of the trait
+        evaluate = input("Is the SECOND allele of the FATHER trait "
+                         + str(father) + " rec or dom?")
+        check_father(evaluate)
+        # moving to next trait
+        father = int(father) + 1
+    else:
+        # ask for second allele of the trait
+        # considering alleles for more than one trait
+        evaluate = input("Is the FIRST allele of the FATHER trait "
+                         + str(father) + " rec or dom?")
+        # run checking function
+        check_father(evaluate)
+        # moving to next trait
+        father = int(father) + 1
+
+# change string into list
+mothergenotype = mothergenotype.split(" ")
+# remove last value in list
+# which is always " "
+mothergenotype = mothergenotype[:-1]
+mothergenotype = mothergenotype[:]
+print(mothergenotype)
+
+# change string into list
+fathergenotype = fathergenotype.split(" ")
+# remove last value in list
+# which is always " "
+fathergenotype = fathergenotype[:-1]
