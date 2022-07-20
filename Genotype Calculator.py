@@ -36,16 +36,16 @@ while mother <= int(traitsquantity):
         evaluate = input("Is the SECOND allele of the MOTHER trait "
                          + str(mother) + " rec or dom?")
         check_mother(evaluate)
-        # moving to next trait
+        # move to next trait
         mother = int(mother) + 1
     else:
         # ask for second allele of the trait
-        # considering alleles for more than one trait
+        # consider alleles for more than one trait
         evaluate = input("Is the FIRST allele of the MOTHER trait "
                          + str(mother) + " rec or dom?")
         # run checking function
         check_mother(evaluate)
-        # moving to next trait
+        # move to next trait
         mother = int(mother) + 1
 
 # initializing strings
@@ -55,7 +55,7 @@ fathergenotype = ""
 
 
 # function to evaluate input
-# create the mother genotype
+# create the father genotype
 def check_father(evaluate):
     global fathergenotype
     # assign values depending on rec or dom
@@ -81,16 +81,16 @@ while father <= int(traitsquantity):
         evaluate = input("Is the SECOND allele of the FATHER trait "
                          + str(father) + " rec or dom?")
         check_father(evaluate)
-        # moving to next trait
+        # move to next trait
         father = int(father) + 1
     else:
         # ask for second allele of the trait
-        # considering alleles for more than one trait
+        # consider alleles for more than one trait
         evaluate = input("Is the FIRST allele of the FATHER trait "
                          + str(father) + " rec or dom?")
         # run checking function
         check_father(evaluate)
-        # moving to next trait
+        # move to next trait
         father = int(father) + 1
 
 # change string into list
@@ -98,11 +98,33 @@ mothergenotype = mothergenotype.split(" ")
 # remove last value in list
 # which is always " "
 mothergenotype = mothergenotype[:-1]
-mothergenotype = mothergenotype[:]
-print(mothergenotype)
 
 # change string into list
 fathergenotype = fathergenotype.split(" ")
 # remove last value in list
 # which is always " "
 fathergenotype = fathergenotype[:-1]
+print(fathergenotype)
+print(mothergenotype)
+
+listsplit = 0
+counter = 0
+combined = ""
+potentials = []
+
+while counter < len(mothergenotype):
+    while listsplit < len(fathergenotype):
+        combined = combined.join(mothergenotype[counter:counter+1])
+        combined = combined.join(fathergenotype[listsplit:listsplit+1])
+        potentials.append(combined)
+        listsplit = listsplit + 1
+    counter = counter + 1
+    listsplit = 0
+print(potentials)
+
+list = ["ok ", "okz ", "okay "]
+list_2 = ["bruh ", "pls "]
+string = "string"
+string = string.join(list)
+string = string.join(list_2)
+print(string)
